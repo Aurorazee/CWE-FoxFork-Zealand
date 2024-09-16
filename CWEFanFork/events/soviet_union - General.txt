@@ -3307,3 +3307,47 @@ ai_chance = { factor = 0.1 }
 		}
 
 }
+
+#Korean SSR
+country_event = {
+	id = KOREANSSR
+	title = "Authorization of a Korean SSR"
+	desc = EVT_KOREANSSR_DESC
+	picture = "Korean_ssr"
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = RUS
+		year = 1968
+		NOT = { has_global_flag = 1950_start_date_flag }
+		NOT = { has_country_flag = korean_ssr}
+		
+		is_vassal = no
+		war = no
+		
+		#Owns North Korea
+		is_possible_vassal = NKO
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "Approve the measure"
+		prestige = -200
+		badboy = 10
+		add_accepted_culture = korean
+		NKO = { all_core = { add_core = RUS } }
+		set_country_flag = korean_ssr
+		inherit = NKO
+		ai_chance = { factor = 0.95 }
+	}
+	
+	option = {
+		name = "Veto!"
+		ai_chance = { factor = 0.05 }
+	}
+
+}
